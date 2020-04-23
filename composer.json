@@ -1,0 +1,13 @@
+{
+"name": "lscottgr/328/hello",
+"authors": [
+{
+"name": "Lewis Scott",
+"email": "lscott19@mail.greenriver.edu"
+
+}
+],
+"require": {
+"bcosca/fatfree-core": "dev-master"
+}
+}
