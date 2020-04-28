@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Make a Date</title>
-    <link href="../styles/styles.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
@@ -26,39 +26,41 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">My Dating Website <span class="sr-only">(current)</span></a>
-
+        </div>
     </div>
 </nav>
 
 <div class="container">
-    <section class="media mb-4" id="intro">
-        <div class="media-body container">
-            <h2 class="text-center">My Dating Website</h2>
-            <p>Make a love connection.  At <strong>My Dating Website</strong> you'll make your connection.
-            We bring together couples who share common interests with our proprietary matching algorithm.
-            Try us.  We'll help you meet your match.</p>
+    <div class="row">
+            <div class="col-6">
 
-            <div class="container text-center ml-3 mr-3">
-            <h5 class="text-center">Hear what our users are saying about us</h5>
-                <hr/>
-                <blockquote class="blockquote text-left">
-                    <p class="mb-0 text-left"><em><q>I really love your site.  I made a love connection</q></em></p>
-                    <footer class="blockquote-footer float-none">Mike</footer>
-                    <p class="mb-0 text-left"><em><q>Best Dating site ever</q></em></p>
-                    <footer class="blockquote-footer">Danny</footer>
-                </blockquote>
-                <hr/>
+                <h2 class="text-center">My Dating Website</h2>
+                <p>Make a love connection.  At <strong>My Dating Website</strong> you'll make your connection.
+                We bring together couples who share common interests with our proprietary matching algorithm.
+                Try us.  We'll help you meet your match.</p>
+
+                <div class="text-center ml-3 mr-3">
+                <h5 class="text-center">Hear what our users are saying about us</h5>
+                    <hr/>
+                    <blockquote class="blockquote text-left">
+                        <p class="mb-0 text-left"><em><q>I really love your site.  I made a love connection</q></em></p>
+                        <footer class="blockquote-footer"><cite>Mike</cite></footer>
+                        <p class="mb-0 text-left"><em><q>Best Dating site ever</q></em></p>
+                        <footer class="blockquote-footer"><cite>Danny</cite></footer>
+                        <p class="mb-0 text-left"><em><q>Those cats look hungry for those birds</q></em></p>
+                        <footer class="blockquote-footer"><cite>Anonymous</cite></footer>
+                    </blockquote>
+                    <hr/>
+                    <form>
+                        <button class="btn btn-primary text-center" type="submit">Create a Profile</button>
+                    </form>
+                </div>
             </div>
 
-            <form>
-                <button class="btn btn-primary text-center" type="submit">Create a Profile</button>
-            </form>
-
-        </div>
-        <img class="d-flex mr-3 img-fluid rounded float-left" src="../images/homePageImage.png" alt="image">
-
-    </section>
-
+            <div class="col-6">
+                <img class="img-fluid rounded" src="images/homePageImage.png" alt="image">
+            </div>
+    </div>
 </div>
 
 
