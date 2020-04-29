@@ -1,4 +1,11 @@
 <?php
+/*
+ * Lewis Scott
+ * 4/17/20
+ * filename https://lscott.greenriverdev.com/328/dating/index.php
+ * Controller page for dating website
+ * provides routes to various views and runs fat free
+ */
 //Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
