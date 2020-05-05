@@ -13,6 +13,9 @@ error_reporting(E_ALL);
 //Require the autoload file
 require_once('vendor/autoload.php');
 
+// start session
+session_start();
+
 //Create an instance of the Base class
 // instantiates the base class of the fat
 // free framework
@@ -26,8 +29,16 @@ $f3->route('GET /', function () {
     echo $view->render
     ('views/home.html');
 
-}
-);
+});
+
+// this is the route to
+$f3->route('GET|POST /persInfo', function($f3){
+    // if the form has been submitted
+
+    //display a page called personalInfo.html
+    $view = new Template();
+    echo $view->render('views/personalInfo.html');
+});
 
 //Run fat free
 // -> runs class method instance method

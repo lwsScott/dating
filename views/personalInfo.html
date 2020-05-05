@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <include href="includes/header.html"></include>
+</head>
+<body>
+
+<div class="container">
+    <h3>Personal Information</h3>
+
+    <form class="form-group" id="mainForm" action="#" method="post">
+
+    <div class="row">
+        <div class="col-6">
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        <label for="firstName"><strong>First Name:</strong></label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Please input your name.">
+                        <span class="err" id="errFirstName">Name is Required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName"><strong>Last Name:</strong></label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Please input your name.">
+                        <span class="err" id="errLastName">Name is Required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName"><strong>Age</strong></label>
+                        <input type="text" class="form-control" id="age" name="age" placeholder="Please input your age.">
+                        <span class="err" id="errAge">Age is Required</span>
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Gender</strong></label>
+                        <br>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                         </div>
+                    <div class="form-group">
+                        <label for="phone"><strong>Phone Number</strong></label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="(000)-555-1234">
+                        <span class="err" id="errPhone">Phone Number is Required</span>
+                    </div>
+                </fieldset>
+        </div>
+
+        <div class="col-6">
+            <div class="container">
+                <button type="button" class="btn btn-light"><strong>Note:</strong>
+                    All information entered is protected by our <a href="">privacy policy.</a>
+                    Profile Information can only be viewed by others with your permission.
+                </button>
+            </div>
+        </div>
+    </div>
+
+        <button id="button" type="submit" class="btn-primary float-right">Next ></button>
+    </form>
+
+
+
+    </div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
