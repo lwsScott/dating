@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Personal Info</title>
     <include href="includes/header.html"></include>
 </head>
 <body>
+
+<include href="includes/navBar.html"></include>
 
 <div class="container">
     <h3>Personal Information</h3>
@@ -13,15 +15,15 @@
     <form class="form-group" id="mainForm" action="#" method="post">
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
                 <fieldset class="form-group">
                     <div class="form-group">
-                        <label for="firstName"><strong>First Name:</strong></label>
+                        <label for="firstName"><strong>First Name</strong></label>
                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Please input your name.">
                         <span class="err" id="errFirstName">Name is Required</span>
                     </div>
                     <div class="form-group">
-                        <label for="lastName"><strong>Last Name:</strong></label>
+                        <label for="lastName"><strong>Last Name</strong></label>
                         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Please input your name.">
                         <span class="err" id="errLastName">Name is Required</span>
                     </div>
@@ -50,20 +52,18 @@
                 </fieldset>
         </div>
 
-        <div class="col-6">
+        <div class="col-5">
             <div class="container">
-                <button type="button" class="btn btn-light"><strong>Note:</strong>
+                <button type="button" class="btn btn-light text-center"><strong>Note:</strong>
                     All information entered is protected by our <a href="">privacy policy.</a>
                     Profile Information can only be viewed by others with your permission.
                 </button>
             </div>
         </div>
     </div>
-
         <button id="button" type="submit" class="btn-primary float-right">Next ></button>
+
     </form>
-
-
 
     </div>
 

@@ -31,10 +31,12 @@ $f3->route('GET /', function () {
 
 });
 
-// this is the route to
+// this is the route to personal info page
+// GET method when coming from home page
+// POST method when submitting form
 $f3->route('GET|POST /persInfo', function($f3){
     // if the form has been submitted
-
+    // validate the data
     //display a page called personalInfo.html
     $view = new Template();
     echo $view->render('views/personalInfo.html');
