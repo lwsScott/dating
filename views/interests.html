@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interests</title>
+    <include href="includes/header.html"></include>
+</head>
+<body>
+
+<include href="includes/navBar.html"></include>
+
+<div class="container card rounded">
+    <h3>Interests</h3>
+
+    <form class="form-group" id="mainForm" action="#" method="post">
+
+        <label><strong>In-door Interests</strong></label>
+
+        <div class="row">
+            <div class="col-3">
+                <!-- get indoor interests -->
+                <div class="form-group">
+                        <div class="form-check">
+                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="tv" id="tv">
+                            <label class="form-check-label" for="tv">tv</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="puzzle" id="puzzle">
+                            <label class="form-check-label" for="puzzle">puzzle</label>
+                        </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="movies" id="movies">
+                        <label class="form-check-label" for="movies">movies</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="reading" id="reading">
+                        <label class="form-check-label" for="reading">reading</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="cooking" id="cooking">
+                        <label class="form-check-label" for="cooking">cooking</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="playing cards" id="playing cards">
+                        <label class="form-check-label" for="playing cards">playing cards</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="board games" id="board games">
+                        <label class="form-check-label" for="board games">board games</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="video games" id="video games">
+                        <label class="form-check-label" for="video games">video games</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <label><strong>Out-door Interests</strong></label>
+
+        <div class="row">
+            <div class="col-3">
+                <!-- get outdoor interests -->
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="hiking" id="hiking">
+                        <label class="form-check-label" for="hiking">hiking</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="walking" id="walking">
+                        <label class="form-check-label" for="walking">walking</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="biking" id="biking">
+                        <label class="form-check-label" for="biking">biking</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="climbing" id="climbing">
+                        <label class="form-check-label" for="climbing">climbing</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="swimming" id="swimming">
+                        <label class="form-check-label" for="swimming">swimming</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="collecting" id="collecting">
+                        <label class="form-check-label" for="collecting">collecting</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="err" id="errInt">Please select an interest</span>
+        <button id="button" type="submit" class="btn-primary float-right">Next ></button>
+
+    </form>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
