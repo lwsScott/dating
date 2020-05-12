@@ -31,7 +31,7 @@ error_reporting(E_ALL);
                 <check if="{{ isset(@SESSION.indoorInts) }}">
                     {{ implode(@SESSION.indoorInts, ' ') }}
                 </check>
-                <check if="{{ isset(@SESSION.indoorInts) }}">
+                <check if="{{ isset(@SESSION.outdoorInts) }}">
                     {{ implode(@SESSION.outdoorInts, ' ') }}
                 </check>
 

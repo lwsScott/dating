@@ -84,12 +84,12 @@ $f3->route('GET|POST /persInfo', function($f3){
 
             //Redirect to the profile route
             $f3->reroute("profile");
-            session_destroy();
+            //session_destroy();
         }
 
     }
 
-    //display a page called personalInfo.html
+    // if method is get display a page called personalInfo.html
     $view = new Template();
     echo $view->render('views/personalInfo.html');
 });
@@ -138,13 +138,13 @@ $f3->route('GET|POST /profile', function($f3)
             $_SESSION['seeking'] = $_POST['seeking'];
             $_SESSION['bio'] = $_POST['bio'];
 
-            //Redirect to the summary route
+            //Redirect to the interests route
             $f3->reroute("interests");
-            session_destroy();
+            //session_destroy();
         }
     }
 
-    //display a page called personalInfo.html
+    // if method is get display a page called profile.html
     $view = new Template();
     echo $view->render('views/profile.html');
 });
@@ -161,7 +161,6 @@ $f3->route('GET|POST /interests', function($f3){
     $f3->set ('outdoorInts', $outdoorInts);
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        var_dump($_POST);
         // validate the data
         /*
         if (count(array_intersect($_POST['indoorInts'], $indoorInts)) == 0 &&
@@ -179,18 +178,18 @@ $f3->route('GET|POST /interests', function($f3){
 
             // redirect to summary page
             $f3->reroute('summary');
-            session_destroy();
+            //session_destroy();
         //}
     }
 
-    //display a page called personalInfo.html
+    //if method is get display a page called interests.html
     $view = new Template();
     echo $view->render('views/interests.html');
 });
 
 // Define a summary route
 $f3->route('GET /summary', function () {
-    //echo '<h1>Initial home page check</h1>';
+    // display the summary page
     $view = new Template();
     echo $view->render
     ('views/summary.php');
