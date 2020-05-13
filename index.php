@@ -193,6 +193,8 @@ $f3->route('GET /summary', function () {
     $view = new Template();
     echo $view->render
     ('views/summary.php');
+    $_SESSION = array();
+    session_unset();
     session_destroy();
 
 });
