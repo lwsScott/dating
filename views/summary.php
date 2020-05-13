@@ -3,7 +3,13 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 //session_start();
 ?>
-
+<!--
+  Lewis Scott
+  5/1/20
+  filename https://lscott.greenriverdev.com/328/dating/views/summary.html
+  accessed through https://lscott.greenriverdev.com/328/dating/interests
+  Home page view site
+-->
 
 <!DOCTYPE html>
 <html lang="en">
