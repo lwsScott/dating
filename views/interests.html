@@ -27,11 +27,21 @@
                 <!-- get indoor interests -->
                 <div class="form-group">
                         <div class="form-check">
-                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="tv" id="tv">
+                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="tv" id="tv"
+                            <check if='{{ isset(@selectedIndoor) }}'>
+                                <check if='{{ in_array("tv", @selectedIndoor) }}'>
+                                    checked="checked"
+                                </check>
+                            </check>>
                             <label class="form-check-label" for="tv">tv</label>
                         </div>
                         <div class="form-check">
-                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="puzzle" id="puzzle">
+                            <input name="indoorInts[]" class="form-check-input" type="checkbox" value="puzzles" id="puzzle"
+                            <check if='{{ isset(@selectedIndoor) }}'>
+                                <check if='{{ in_array("puzzles", @selectedIndoor) }}'>
+                                    checked="checked"
+                                </check>
+                            </check>>
                             <label class="form-check-label" for="puzzle">puzzle</label>
                         </div>
                 </div>
@@ -40,11 +50,21 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="movies" id="movies">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="movies" id="movies"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("movies", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="movies">movies</label>
                     </div>
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="reading" id="reading">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="reading" id="reading"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("reading", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="reading">reading</label>
                     </div>
                 </div>
@@ -53,11 +73,21 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="cooking" id="cooking">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="cooking" id="cooking"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("cooking", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="cooking">cooking</label>
                     </div>
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="playing cards" id="cards">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="playing cards" id="cards"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("playing cards", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="cards">playing cards</label>
                     </div>
                 </div>
@@ -66,16 +96,32 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="board games" id="boardGames">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="board games" id="boardGames"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("board games", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="boardGames">board games</label>
                     </div>
                     <div class="form-check">
-                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="video games" id="videoGames">
+                        <input name="indoorInts[]" class="form-check-input" type="checkbox" value="video games" id="videoGames"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("video games", @selectedIndoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="videoGames">video games</label>
                     </div>
                 </div>
             </div>
+            <span class="err">
+                <check if='{{ isset(@errors["indoorInts"]) }}'>
+                    {{ @errors['indoorInts']}}
+                </check>
+            </span>
         </div>
+
 
         <label><strong>Out-door Interests</strong></label>
 
@@ -84,11 +130,21 @@
                 <!-- get outdoor interests -->
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="hiking" id="hiking">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="hiking" id="hiking"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("hiking", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="hiking">hiking</label>
                     </div>
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="walking" id="walking">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="walking" id="walking"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("walking", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="walking">walking</label>
                     </div>
                 </div>
@@ -97,11 +153,21 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="biking" id="biking">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="biking" id="biking"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("biking", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="biking">biking</label>
                     </div>
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="climbing" id="climbing">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="climbing" id="climbing"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("climbing", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="climbing">climbing</label>
                     </div>
                 </div>
@@ -110,7 +176,12 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="swimming" id="swimming">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="swimming" id="swimming"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("swimming", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="swimming">swimming</label>
                     </div>
                 </div>
@@ -119,14 +190,25 @@
             <div class="col-3">
                 <div class="form-group">
                     <div class="form-check">
-                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="collecting" id="collecting">
+                        <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="collecting" id="collecting"
+                        <check if='{{ isset(@selectedIndoor) }}'>
+                            <check if='{{ in_array("collecting", @selectedOutdoor) }}'>
+                                checked="checked"
+                            </check>
+                        </check>>
                         <label class="form-check-label" for="collecting">collecting</label>
                     </div>
                 </div>
             </div>
+            <span class="err">
+                <check if='{{ isset(@errors["outdoorInts"]) }}'>
+                    <check if='{{ !in_array(@selectedOutdoor, @selectedOutdoor) }}'>
+                        "Invalid choice(s)"
+                    </check>
+                </check>
+            </span>
         </div>
 
-        <span class="err" id="errInt">Please select an interest</span>
         <button id="button" type="submit" class="btn-primary float-right">Next ></button>
 
     </form>

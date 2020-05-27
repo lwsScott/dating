@@ -26,35 +26,60 @@
                 <fieldset class="form-group">
                     <div class="form-group">
                         <label for="firstName"><strong>First Name</strong></label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Please input your name.">
-                        <!--<span class="err" id="errFirstName">Name is Required</span>-->
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                               placeholder="Please input your name."
+                               value="<check if='{{ !empty(@selectedFname) }}'>{{ @selectedFname }}</check>">
+                        <span class="err">
+                            <check if="{{ isset(@errors['fName']) }}">
+                                <p>{{ @errors['fName'] }}</p>
+                            </check>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="lastName"><strong>Last Name</strong></label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Please input your name.">
-                        <!--<span class="err" id="errLastName">Name is Required</span>-->
-                   </div>
+                        <input type="text" class="form-control" id="lastName" name="lastName"
+                               placeholder="Please input your name."
+                               value="<check if='{{ !empty(@selectedLname) }}'>{{ @selectedLname }}</check>">
+                        <span class="err">
+                            <check if="{{ isset(@errors['lName']) }}">
+                                <p>{{ @errors['lName'] }}</p>
+                            </check>
+                        </span>
+                    </div>
                    <div class="form-group">
                        <label for="age"><strong>Age</strong></label>
-                       <input type="text" class="form-control" id="age" name="age" placeholder="Please input your age.">
-                       <!--<span class="err" id="errAge">Age is Required</span>-->
-                    </div>
+                       <input type="text" class="form-control" id="age" name="age"
+                              placeholder="Please input your age."
+                              value="<check if='{{ !empty(@selectedAge) }}'>{{ @selectedAge }}</check>">
+                       <span class="err">
+                            <check if="{{ isset(@errors['age']) }}">
+                                <p>{{ @errors['age'] }}</p>
+                            </check>
+                        </span>
+                   </div>
                     <div class="form-group">
                         <label><strong>Gender</strong></label>
                         <br>
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                            <check if='{{ @selectedGender == "male" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                            <check if='{{ @selectedGender == "female" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                      </div>
                     <div class="form-group">
                         <label for="phone"><strong>Phone Number</strong></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="(000)-555-1234">
-                        <!--<span class="err" id="errPhone">Phone Number is Required</span>-->
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="(000)-555-1234"
+                               value="<check if='{{ !empty(@selectedPhone) }}'>{{ @selectedPhone }}</check>">
+                        <span class="err">
+                            <check if="{{ isset(@errors['phone']) }}">
+                                <p>{{ @errors['phone'] }}</p>
+                            </check>
+                        </span>
                     </div>
                 </fieldset>
         </div>

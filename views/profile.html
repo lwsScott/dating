@@ -25,31 +25,50 @@
                 <fieldset class="form-group">
                     <div class="form-group">
                         <label for="email"><strong>Email</strong></label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
-                        <!--<span class="err" id="errEmail">Name is Required</span>-->
+                        <input type="text" class="form-control" id="email" name="email"
+                               placeholder="my_email@gmail.com"
+                               value="<check if='{{ !empty(@selectedEmail) }}'>{{ @selectedEmail }}</check>">
+                        <span class="err" >
+                            <check if="{{ isset(@errors['email']) }}">
+                                <p>{{ @errors['email'] }}</p>
+                            </check>
+                        </span>
                     </div>
                     <!-- get color -->
                     <div class="form-group">
                         <fieldset class="form-group">
                             <label for="state"><strong>State</strong></label>
                             <select class="form-control" id= "state" name="state">
-                                <option value="none">Select a State</option>
+                                <check if='{{ isset(@selectedState) }}'>
+                                    <true>
+                                        <option value="{{ @selectedState }}">{{ @selectedState }}</option>
+                                    </true>
+                                    <false>
+                                        <option value="none">Select a State</option>
+                                    </false>
+                                </check>
                                 <repeat group="{{ @states }}" value="{{ @state }}">
-                                    <option>{{ @state }}</option>
-                                </repeat>
+                                        <option>{{ @state }}</option>
+                                    </repeat>
                             </select>
-                            <!--<span class="err" id="errState">State is Required</span>-->
+                            <span class="err">
+                                <check if="{{ isset(@errors['state']) }}">
+                                    <p>{{ @errors['state'] }}</p>
+                                </check>
+                            </span>
                         </fieldset>
                     </div>
                     <div class="form-group">
                         <label><strong>Seeking</strong></label>
                         <br>
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="seeking" id="male" value="male">
+                            <input class="form-check-input" type="radio" name="seeking" id="male" value="male"
+                            <check if='{{ @selectedGender == "male" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="seeking" id="female" value="female">
+                            <input class="form-check-input" type="radio" name="seeking" id="female" value="female"
+                            <check if='{{ @selectedGender == "female" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                     </div>
@@ -60,8 +79,7 @@
                 <div class="container">
                     <label for="bio"><strong>Biography</strong></label>
                     <textarea id="bio" name="bio" class="form-control"
-                              placeholder="Please tell us a little about yourself."></textarea>
-                    <span class="err" id="errBio">Bio is Required</span>
+                      placeholder="Please tell us a little about yourself"><check if='{{ !empty(@selectedBio) }}'>{{ @selectedBio }}</check></textarea>
                 </div>
             </div>
         </div>

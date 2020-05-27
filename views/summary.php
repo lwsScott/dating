@@ -35,12 +35,11 @@ error_reporting(E_ALL);
             <p class="card mb-0 ml-3 p-2">Seeking : {{ @SESSION.seeking }}</p>
             <p class="card mb-0 ml-3 p-2">Interests :
                 <check if="{{ isset(@SESSION.indoorInts) }}">
-                    {{ implode(@SESSION.indoorInts, ' ') }}
+                    {{ implode(@SESSION.indoorInts, ', ') }}
+                </check><check if="{{ isset(@SESSION.outdoorInts) }}">
+                    <check if="{{ isset(@SESSION.indoorInts) }}">,</check>
+                    {{ implode(@SESSION.outdoorInts, ', ') }}
                 </check>
-                <check if="{{ isset(@SESSION.outdoorInts) }}">
-                    {{ implode(@SESSION.outdoorInts, ' ') }}
-                </check>
-
             </p>
         </div>
 
