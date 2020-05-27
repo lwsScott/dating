@@ -11,8 +11,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //Require the autoload file
-require_once('vendor/autoload.php');
-require_once ('model/data-layer.php');
+require_once 'vendor/autoload.php';
+require_once 'model/data-layer.php';
+require_once 'model/validation-functions.php';
 
 // start session
 session_start();
@@ -31,7 +32,6 @@ $f3->route('GET /', function () {
     $view = new Template();
     echo $view->render
     ('views/home.html');
-
 });
 
 // this is the route to personal info page
@@ -43,43 +43,56 @@ $f3->route('GET|POST /persInfo', function($f3){
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
         $valid = true;
-        //Validate the data
-        /*
-        if (empty($_POST['firstName']))
-        {
-            $valid = false;
-            echo "Please supply a first name<br>";
-        }
-        if (empty($_POST['lastName']))
-        {
-            $valid = false;
-            echo "Please supply a last name<br>";
-        }
-        if (empty($_POST['age']))
-        {
-            $valid = false;
-            echo "Please enter your age<br>";
-        }
-        if (empty($_POST['gender']))
-        {
-            $valid = false;
-            echo "Please enter your gender<br>";
-        }
-        if (empty($_POST['phone']))
-        {
-            $valid = false;
-            echo "Please enter your phone number<br>";
-        }
-        */
-        if ($valid)
-        {
-            //Data is valid
 
+        // validate first name
+        if (!validName($_POST['firstName'])) {
+            $valid = false;
+            $f3->set('errors["fName"]', "Please provide a first name");
+        }
+        else {
+            $f3->set('selectedFname', $_POST['firstName']);
+        }
+
+        // validate last name
+        if (!validName($_POST['lastName'])) {
+            $valid = false;
+            $f3->set('errors["lName"]', "Please provide a last name");
+        }
+        else {
+            $f3->set('selectedLname', $_POST['lastName']);
+        }
+
+        // validate age
+        if (!validAge($_POST['age'])) {
+            $valid = false;
+            $f3->set('errors["age"]', "Please provide your age");
+        }
+        else {
+            $f3->set('selectedAge', $_POST['age']);
+        }
+
+        // validate phone
+        if (!validPhone($_POST['phone'])) {
+            $valid = false;
+            $f3->set('errors["phone"]', "Please provide a valid phone number");
+        }
+        else {
+            $f3->set('selectedPhone', $_POST['phone']);
+        }
+
+        $f3->set('selectedGender', $_POST['gender']);
+
+        if ($valid) {
+            //Data is valid
             //***Add the form data to the session
             $_SESSION['firstName'] = $_POST['firstName'];
+
             $_SESSION['lastName'] = $_POST['lastName'];
+
             $_SESSION['age'] = $_POST['age'];
+
             $_SESSION['gender'] = $_POST['gender'];
+
             $_SESSION['phone'] = $_POST['phone'];
 
             //Redirect to the profile route
@@ -89,7 +102,7 @@ $f3->route('GET|POST /persInfo', function($f3){
 
     }
 
-    // if method is get display a page called personalInfo.html
+    // if method is get - display a page called personalInfo.html
     $view = new Template();
     echo $view->render('views/personalInfo.html');
 });
@@ -105,28 +118,29 @@ $f3->route('GET|POST /profile', function($f3)
     {
         $valid = true;
         //Validate the data
-        /*
-        if (empty($_POST['email']))
+        // validate e-mail
+        if (!validEMail($_POST['email']))
         {
             $valid = false;
-            echo "Please supply a valid e-mail address<br>";
+            $f3->set('errors["email"]', "Please provide a valid Email");
         }
-        if (empty($_POST['state']) || $_POST['state'] == 'none')
+        else {
+            $f3->set('selectedEmail', $_POST['email']);
+        }
+
+        // validate state - only if provided is not a state
+        if (!validState($_POST['state']))
         {
             $valid = false;
-            echo "Please choose a State<br>";
+            $f3->set('errors["state"]', "State is incorrect");
         }
-        if (empty($_POST['seeking']))
-        {
-            $valid = false;
-            echo "Please enter what you're seeking<br>";
+        else {
+            $f3->set('selectedState', $_POST['state']);
         }
-        if (empty($_POST['bio']))
-        {
-            $valid = false;
-            echo "Please tell us a little about yourself<br>";
-        }
-        */
+
+        $f3->set('selectedGender', $_POST['seeking']);
+        $f3->set('selectedBio', $_POST['bio']);
+
 
         if ($valid)
         {
@@ -157,29 +171,42 @@ $f3->route('GET|POST /interests', function($f3){
     // validate the data
     $indoorInts = getIndoorInts();
     $outdoorInts = getOutdoorInts();
-    $f3->set ('indoorInts', $indoorInts);
-    $f3->set ('outdoorInts', $outdoorInts);
+    $f3->set('indoorInts', $indoorInts);
+    $f3->set('outdoorInts', $outdoorInts);
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+        //var_dump($_POST);
         // validate the data
-        /*
-        if (count(array_intersect($_POST['indoorInts'], $indoorInts)) == 0 &&
-           (count(array_intersect($_POST['outdoorInts'], $outdoorInts)) == 0)   )
+        $valid = true;
+        if (!validIndoor($_POST['indoorInts']))
         {
-            echo "<p>Please enter a valid interest</p>";
+            $valid = false;
+            $f3->set('errors["indoorInts"]', "Invalid choice(s)");
+            // make the valid ones sticky
+            $f3->set('selectedIndoor', $_POST['indoorInts']);
+        } else {
+            $f3->set('selectedIndoor', $_POST['indoorInts']);
         }
-        // data is valid
-        else
+
+        if (!validOutdoor($_POST['outdoorInts']))
         {
-        */
+            $valid = false;
+            $f3->set('errors["outdoorInts"]', "Invalid choice(s)");
+            // make the valid ones sticky
+            $f3->set('selectedOutdoor', $_POST['outdoorInts']);
+        } else {
+            $f3->set('selectedOutdoor', $_POST['outdoorInts']);
+        }
+
+        if ($valid) {
             // store the data in the session array
             $_SESSION['outdoorInts'] = $_POST['outdoorInts'];
             $_SESSION['indoorInts'] = $_POST['indoorInts'];
 
-            // redirect to summary page
+           //redirect to summary page
             $f3->reroute('summary');
-            //session_destroy();
-        //}
+            session_destroy();
+        }
     }
 
     //if method is get display a page called interests.html
@@ -194,9 +221,7 @@ $f3->route('GET /summary', function () {
     echo $view->render
     ('views/summary.php');
     $_SESSION = array();
-    session_unset();
     session_destroy();
-
 });
 
 //Run fat free
