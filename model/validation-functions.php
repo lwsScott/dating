@@ -1,14 +1,12 @@
 <?php
 
-
-/* Define functions to validate contact data */
-
+/* Define functions to validate data */
 function validName($name)
 {
     return !empty($name);
 }
 
-function Age($age)
+function validAge($age)
 {
     return (is_numeric($age) && $age > 0);
 }
@@ -25,31 +23,21 @@ function validGender($gender)
     }
 }
 
-/*
-function validLinkedIn($linkedIn)
+function validPhone($phoneNum)
 {
-    $website = test_input($linkedIn);
-
-    if (!preg_match("/\b(?:(?:http?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $website)) {
-        return false;
-    }
-}
-*/
-
-function phoneNum($phoneNum)
-{
-    return (preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phoneNum));
+    //echo $phoneNum;
+    return (preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phoneNum) ||
+        preg_match("/^[0-9]{10}$/", $phoneNum));
 }
 
-function validFormat($validFormat)
+function validEMail($email)
 {
-    if ($validFormat != "html" && $validFormat != "text")
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
         return false;
     }
     return true;
 }
-
 
 function test_input($data)
 {
@@ -59,102 +47,42 @@ function test_input($data)
     return $data;
 }
 
-
-$isValid = true;
-
-//var_dump($_POST);
-
-$errors = [];   //Initialize an errors array
-
-
-if(validName($_POST['firstName']))
+function validOutdoor($outdoorInts)
 {
-    $fname = $_POST['firstName'];
-}
-else
-{
-    $errors[] = 'First name is required';
-    //echo "<p>First name is required<br></p>";
-    $isValid = false;
-}
-
-if(validName($_POST['lastName']))
-{
-    $lname = $_POST['lastName'];
-}
-else
-{
-    $errors[] = 'Last name is required';
-    //echo "<p>Last name is required</p>";
-    $isValid = false;
-}
-
-
-// check Email if Mailing List is checked
-if (isset($_POST['mailList']))
-{
-    if (validEMail($_POST['Email']))
-    {
-        $Email = $_POST['Email'];
-    } else
-    {
-        $errors[] = 'A valid Email is required to be put on the Mailing List';
-        //echo "<p>A valid Email is required to be put on the Mailing List.</p>";
-        $isValid = false;
-    }
-}
-else
-{
-    $Email = $_POST['Email'];
-    if($Email != "")
-    {
-        if (!validEMail($Email))
-        {
-            $errors[] = 'Email is not a valid address';
-            //echo "<p>Email is not a valid address</p>";
-            $isValid = false;
+    //$count = (count(array_intersect($_POST['outdoorInts'], $outdoorInts)));
+    $ints = getOutdoorInts();
+    //echo implode(', ', $outdoorInts);
+    //echo "the count is " . count(array_diff($indoorInts, $ints));
+    if (!empty($outdoorInts)) {
+        //echo "here in ";
+        if (count(array_diff($outdoorInts, $ints)) != 0) {
+            return false;
         }
     }
+    return true;
 }
 
-if ($_POST['linkedIn'] != "")
+function validIndoor($indoorInts)
 {
-    if (validLinkedIn($_POST['linkedIn']))
-    {
-        $linkedIn = $_POST['linkedIn'];
-    } else
-    {
-        $errors[] = 'LinkedIn is invalid address';
-        //echo "<p>LinkedIn is invalid address</p>";
-        $isValid = false;
+    //$count = (count(array_intersect($_POST['indoorInts'], $indoorInts)));
+    //var_dump($_POST);
+    $ints = getIndoorInts();
+    //echo implode(', ', $ints). "<br>";
+    //echo implode(', ', $indoorInts) . "<br>";
+    //echo implode(',', array_diff($indoorInts, $ints)). "<br>";
+    //echo "the count is " . count(array_diff($indoorInts, $ints)). "<br>";
+    if (!empty($indoorInts)) {
+        //echo "here in ";
+        if (count(array_diff($indoorInts, $ints)) != 0) {
+            return false;
+        }
     }
-}
-else
-{
-    $linkedIn = "";
+    return true;
 }
 
-
-if (isset($_POST['met']) && validMet($_POST['met']))
+function validState($state)
 {
-    $met = $_POST['met'];
+    //$count = (count(array_intersect($_POST['indoorInts'], $indoorInts)));
+    $states = getStates();
+    return (in_array($state, $states) || ($state == 'none'));
 }
-else
-{
-    $errors[] = 'Please tell me how we met.  It\'s required';
-    //echo "<p>Please tell me how we met.  It's required</p>";
-    $isValid = false;
-
-}
-
-if (validFormat($_POST['format']))
-{
-    $format = $_POST['format'];
-}
-else
-{
-    $errors[] = 'Valid formats are HTML and Text';
-    //echo "<p>Valid formats are HTML and Text</p>";
-    $isValid = false;
-}
-
