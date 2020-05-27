@@ -73,7 +73,7 @@
                      </div>
                     <div class="form-group">
                         <label for="phone"><strong>Phone Number</strong></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="(000)-555-1234"
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="000-555-1234"
                                value="<check if='{{ !empty(@selectedPhone) }}'>{{ @selectedPhone }}</check>">
                         <span class="err">
                             <check if="{{ isset(@errors['phone']) }}">
