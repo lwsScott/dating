@@ -131,7 +131,7 @@
                 <div class="form-group">
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="hiking" id="hiking"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("hiking", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="walking" id="walking"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("walking", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -154,7 +154,7 @@
                 <div class="form-group">
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="biking" id="biking"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("biking", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="climbing" id="climbing"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("climbing", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -177,7 +177,7 @@
                 <div class="form-group">
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="swimming" id="swimming"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("swimming", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -191,7 +191,7 @@
                 <div class="form-group">
                     <div class="form-check">
                         <input name="outdoorInts[]" class="form-check-input" type="checkbox" value="collecting" id="collecting"
-                        <check if='{{ isset(@selectedIndoor) }}'>
+                        <check if='{{ isset(@selectedOutdoor) }}'>
                             <check if='{{ in_array("collecting", @selectedOutdoor) }}'>
                                 checked="checked"
                             </check>
@@ -202,9 +202,7 @@
             </div>
             <span class="err">
                 <check if='{{ isset(@errors["outdoorInts"]) }}'>
-                    <check if='{{ !in_array(@selectedOutdoor, @selectedOutdoor) }}'>
-                        "Invalid choice(s)"
-                    </check>
+                        {{ @errors['outdoorInts'] }}
                 </check>
             </span>
         </div>
