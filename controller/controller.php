@@ -36,7 +36,7 @@ class MemberController
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $valid = true;
-            var_dump($_POST);
+            //var_dump($_POST);
             // validate first name
             if (!$this->_validator->validName($_POST['firstName'])) {
                 $valid = false;
@@ -78,11 +78,23 @@ class MemberController
                 $this->_f3->set('membership', $_POST['membership']);
             }
 
+            // set the selected gender
             $this->_f3->set('selectedGender', $_POST['gender']);
 
             if ($valid) {
                 //Data is valid
-                //***Add the form data to the session
+                // create the member object
+                if (isset($_POST['membership'])) {
+                    $member = new PremiumMember($_POST['firstName'], $_POST['lastName'],
+                        $_POST['age'], $_POST['gender'], $_POST['phone']);
+                }
+                else {
+                    $member = new Member($_POST['firstName'], $_POST['lastName'],
+                        $_POST['age'], $_POST['gender'], $_POST['phone']);
+                }
+                //Add the form data to the session
+                $_SESSION['member'] = $member;
+                /*
                 $_SESSION['firstName'] = $_POST['firstName'];
 
                 $_SESSION['lastName'] = $_POST['lastName'];
@@ -92,10 +104,11 @@ class MemberController
                 $_SESSION['gender'] = $_POST['gender'];
 
                 $_SESSION['phone'] = $_POST['phone'];
-
+               */
                 //Redirect to the profile route
                 $this->_f3->reroute("profile");
                 //session_destroy();
+
             }
 
         }
@@ -145,10 +158,15 @@ class MemberController
                 //Data is valid
 
                 //***Add the form data to the session
-                $_SESSION['email'] = $_POST['email'];
-                $_SESSION['state'] = $_POST['state'];
-                $_SESSION['seeking'] = $_POST['seeking'];
-                $_SESSION['bio'] = $_POST['bio'];
+                //$_SESSION['email'] = $_POST['email'];
+                //$_SESSION['state'] = $_POST['state'];
+                //$_SESSION['seeking'] = $_POST['seeking'];
+                //$_SESSION['bio'] = $_POST['bio'];
+                $_SESSION['member']->setEmail($_POST['email']);
+                $_SESSION['member']->setState($_POST['state']);
+                $_SESSION['member']->setSeeking($_POST['seeking']);
+                $_SESSION['member']->setBio($_POST['bio']);
+
 
                 //Redirect to the interests route
                 $this->_f3->reroute("interests");
@@ -199,8 +217,10 @@ class MemberController
 
             if ($valid) {
                 // store the data in the session array
-                $_SESSION['outdoorInts'] = $_POST['outdoorInts'];
-                $_SESSION['indoorInts'] = $_POST['indoorInts'];
+                //$_SESSION['outdoorInts'] = $_POST['outdoorInts'];
+                //$_SESSION['indoorInts'] = $_POST['indoorInts'];
+                $_SESSION['member']->setIndoorInts($_POST['indoorInts']);
+                $_SESSION['member']->setOutdoorInts($_POST['outdoorInts']);
 
                 //redirect to summary page
                 $this->_f3->reroute('summary');

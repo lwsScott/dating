@@ -14,6 +14,7 @@ class Member
     private $_seeking;
     private $_bio;
 
+
     // constructor
     public function __construct($fname, $lname, $age, $gender, $phone)
     {
@@ -94,6 +95,37 @@ class Member
     public function getBio()
     {
         return $this->_bio;
+    }
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->_email = $email;
+    }
+
+    /**
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->_state = $state;
+    }
+
+    /**
+     * @param mixed $seeking
+     */
+    public function setSeeking($seeking)
+    {
+        $this->_seeking = $seeking;
+    }
+
+    /**
+     * @param mixed $bio
+     */
+    public function setBio($bio)
+    {
+        $this->_bio = $bio;
     }
 
 

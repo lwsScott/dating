@@ -8,12 +8,28 @@ class PremiumMember extends Member
     private $_outdoorInts;
 
     // constructor
-    public function __construct($fname, $lname, $age, $gender, $phone, $indoorInts, $outdoorInts)
+    public function __construct($fname, $lname, $age, $gender, $phone, $indoorInts = "", $outdoorInts = "")
     {
         // call the parent constructor
         parent::__construct($fname, $lname, $age, $gender, $phone);
 
         $this->_indoorInts = $indoorInts;
+        $this->_outdoorInts = $outdoorInts;
+    }
+
+    /**
+     * @param string $indoorInts
+     */
+    public function setIndoorInts($indoorInts)
+    {
+        $this->_indoorInts = $indoorInts;
+    }
+
+    /**
+     * @param string $outdoorInts
+     */
+    public function setOutdoorInts($outdoorInts)
+    {
         $this->_outdoorInts = $outdoorInts;
     }
 

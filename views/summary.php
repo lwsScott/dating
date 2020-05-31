@@ -26,19 +26,19 @@ error_reporting(E_ALL);
 
     <div class="row">
         <div class="col-6">
-            <p class="card mb-0 ml-3 mt-3 p-2">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</p>
-            <p class="card mb-0 ml-3 p-2">Age: {{ @SESSION.age }}</p>
-            <p class="card mb-0 ml-3 p-2">Gender: {{ @SESSION.gender }}</p>
-            <p class="card mb-0 ml-3 p-2">Phone Number: {{ @SESSION.phone }}</p>
-            <p class="card mb-0 ml-3 p-2">E-Mail : {{ @SESSION.email }}</p>
-            <p class="card mb-0 ml-3 p-2">State : {{ @SESSION.state }}</p>
-            <p class="card mb-0 ml-3 p-2">Seeking : {{ @SESSION.seeking }}</p>
+            <p class="card mb-0 ml-3 mt-3 p-2">Name: {{ @SESSION.member->getFname() }} {{@SESSION.member->getLname() }}</p>
+            <p class="card mb-0 ml-3 p-2">Age: {{ @SESSION.member->getAge() }}</p>
+            <p class="card mb-0 ml-3 p-2">Gender: {{ @SESSION.member->getGender() }}</p>
+            <p class="card mb-0 ml-3 p-2">Phone Number: {{ @SESSION.member->getPhone() }}</p>
+            <p class="card mb-0 ml-3 p-2">E-Mail : {{ @SESSION.member->getEmail() }}</p>
+            <p class="card mb-0 ml-3 p-2">State : {{ @SESSION.member->getState() }}</p>
+            <p class="card mb-0 ml-3 p-2">Seeking : {{ @SESSION.member->getSeeking() }}</p>
             <p class="card mb-0 ml-3 p-2">Interests :
-                <check if="{{ isset(@SESSION.indoorInts) }}">
-                    {{ implode(@SESSION.indoorInts, ', ') }}
-                </check><check if="{{ isset(@SESSION.outdoorInts) }}">
-                    <check if="{{ isset(@SESSION.indoorInts) }}">,</check>
-                    {{ implode(@SESSION.outdoorInts, ', ') }}
+                <check if="{{ !empty(@SESSION.member->getIndoorInts()) }}">
+                    {{ implode(@SESSION.member->getIndoorInts(), ', ') }}
+                </check><check if="{{ !empty(@SESSION.member->getIndoorInts()) }}">
+                    <check if="{{ !empty(@SESSION.member->getOutdoorInts()) }}">,</check>
+                    {{ implode(@SESSION.member->getOutdoorInts(), ', ') }}
                 </check>
             </p>
         </div>
@@ -46,7 +46,7 @@ error_reporting(E_ALL);
         <div class="col-6">
             <img class="img-fluid rounded" src="images/homePageImage.png" alt="image">
             <p>Biography</p>
-            <p> {{ @SESSION.bio }}</p>
+            <p> {{ @SESSION.member->getBio() }}</p>
 
         </div>
     </div>
