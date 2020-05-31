@@ -43,7 +43,7 @@ $f3->route('GET|POST /persInfo', function($f3){
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
         $valid = true;
-
+        var_dump($_POST);
         // validate first name
         if (!validName($_POST['firstName'])) {
             $valid = false;
@@ -78,6 +78,11 @@ $f3->route('GET|POST /persInfo', function($f3){
         }
         else {
             $f3->set('selectedPhone', $_POST['phone']);
+        }
+
+        // check if membership selected
+        if (isset($_POST['membership'])) {
+            $f3->set('membership', $_POST['membership']);
         }
 
         $f3->set('selectedGender', $_POST['gender']);

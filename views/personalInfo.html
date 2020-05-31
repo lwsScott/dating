@@ -24,6 +24,7 @@
     <div class="row">
         <div class="col-7">
                 <fieldset class="form-group">
+
                     <div class="form-group">
                         <label for="firstName"><strong>First Name</strong></label>
                         <input type="text" class="form-control" id="firstName" name="firstName"
@@ -35,6 +36,7 @@
                             </check>
                         </span>
                     </div>
+
                     <div class="form-group">
                         <label for="lastName"><strong>Last Name</strong></label>
                         <input type="text" class="form-control" id="lastName" name="lastName"
@@ -46,10 +48,11 @@
                             </check>
                         </span>
                     </div>
+
                    <div class="form-group">
                        <label for="age"><strong>Age</strong></label>
                        <input type="text" class="form-control" id="age" name="age"
-                              placeholder="Please input your age."
+                              placeholder="Please input your age (18-118)."
                               value="<check if='{{ !empty(@selectedAge) }}'>{{ @selectedAge }}</check>">
                        <span class="err">
                             <check if="{{ isset(@errors['age']) }}">
@@ -57,6 +60,7 @@
                             </check>
                         </span>
                    </div>
+
                     <div class="form-group">
                         <label><strong>Gender</strong></label>
                         <br>
@@ -71,6 +75,7 @@
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                      </div>
+
                     <div class="form-group">
                         <label for="phone"><strong>Phone Number</strong></label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="000-555-1234"
@@ -80,6 +85,18 @@
                                 <p>{{ @errors['phone'] }}</p>
                             </check>
                         </span>
+                    </div>
+
+                    <!-- Premium membership -->
+                    <div class="form-group">
+                        <label><strong>Premium Membership</strong></label>
+                        <br>
+                        <input type="checkbox" name="membership" id=membership
+                                <check if='{{ isset(@membership) }}'>
+                                        checked="checked"
+                                </check>>
+                        </input>
+                        <label for="membership">Sign me up for a Premium Account!</label>
                     </div>
                 </fieldset>
         </div>

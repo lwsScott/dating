@@ -8,7 +8,7 @@ function validName($name)
 
 function validAge($age)
 {
-    return (is_numeric($age) && $age > 0);
+    return (is_numeric($age) && $age >= 18 && $age <= 118);
 }
 
 function validGender($gender)
