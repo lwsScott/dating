@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 //Require the autoload file
 require_once 'vendor/autoload.php';
 require_once 'model/data-layer.php';
-require_once 'model/validation-functions.php';
+//require_once 'model/validation-functions.php';
 
 // start session
 session_start();
@@ -72,7 +72,7 @@ $f3->route('GET|POST /interests', function($f3){
 
 // Define a summary route
 $f3->route('GET /summary', function () {
-    $GLOBALS['controller']->interests();
+    $GLOBALS['controller']->summary();
 
 });
 

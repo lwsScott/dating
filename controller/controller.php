@@ -38,7 +38,7 @@ class MemberController
             $valid = true;
             var_dump($_POST);
             // validate first name
-            if (!validName($_POST['firstName'])) {
+            if (!$this->_validator->validName($_POST['firstName'])) {
                 $valid = false;
                 $this->_f3->set('errors["fName"]', "Please provide a first name");
             }
@@ -47,7 +47,7 @@ class MemberController
             }
 
             // validate last name
-            if (!validName($_POST['lastName'])) {
+            if (!$this->_validator->validName($_POST['lastName'])) {
                 $valid = false;
                 $this->_f3->set('errors["lName"]', "Please provide a last name");
             }
@@ -56,7 +56,7 @@ class MemberController
             }
 
             // validate age
-            if (!validAge($_POST['age'])) {
+            if (!$this->_validator->validAge($_POST['age'])) {
                 $valid = false;
                 $this->_f3->set('errors["age"]', "Please provide your age");
             }
@@ -65,7 +65,7 @@ class MemberController
             }
 
             // validate phone
-            if (!validPhone($_POST['phone'])) {
+            if (!$this->_validator->validPhone($_POST['phone'])) {
                 $valid = false;
                 $this->_f3->set('errors["phone"]', "Please provide a valid phone number");
             }
@@ -117,7 +117,7 @@ class MemberController
             $valid = true;
             //Validate the data
             // validate e-mail
-            if (!validEMail($_POST['email']))
+            if (!$this->_validator->validEMail($_POST['email']))
             {
                 $valid = false;
                 $this->_f3->set('errors["email"]', "Please provide a valid Email");
@@ -127,7 +127,7 @@ class MemberController
             }
 
             // validate state - only if provided is not a state
-            if (!validState($_POST['state']))
+            if (!$this->_validator->validState($_POST['state']))
             {
                 $valid = false;
                 $this->_f3->set('errors["state"]', "State is incorrect");
@@ -177,7 +177,7 @@ class MemberController
             //var_dump($_POST);
             // validate the data
             $valid = true;
-            if (!validIndoor($_POST['indoorInts']))
+            if (!$this->_validator->validIndoor($_POST['indoorInts']))
             {
                 $valid = false;
                 $this->_f3->set('errors["indoorInts"]', "Invalid choice(s)");
@@ -187,7 +187,7 @@ class MemberController
                 $this->_f3->set('selectedIndoor', $_POST['indoorInts']);
             }
 
-            if (!validOutdoor($_POST['outdoorInts']))
+            if (!$this->_validator->validOutdoor($_POST['outdoorInts']))
             {
                 $valid = false;
                 $this->_f3->set('errors["outdoorInts"]', "Invalid choice(s)");
