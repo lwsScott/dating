@@ -33,8 +33,7 @@ class MemberController
     public function persInfo()
     {
         // validate the data
-        if($_SERVER['REQUEST_METHOD']=='POST')
-        {
+        if($_SERVER['REQUEST_METHOD']=='POST') {
             $valid = true;
             //var_dump($_POST);
             // validate first name
@@ -79,7 +78,9 @@ class MemberController
             }
 
             // set the selected gender
-            $this->_f3->set('selectedGender', $_POST['gender']);
+            if (isset($_POST['gender'])) {
+                $this->_f3->set('selectedGender', $_POST['gender']);
+            }
 
             if ($valid) {
                 //Data is valid
@@ -123,8 +124,9 @@ class MemberController
      */
     public function profile()
     {
-// if the form has been submitted
+        // if the form has been submitted
         // validate the data
+        echo get_class($_SESSION['member']);
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $valid = true;

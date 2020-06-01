@@ -34,7 +34,7 @@
                             </check>
                         </span>
                     </div>
-                    <!-- get color -->
+                    <!-- get state -->
                     <div class="form-group">
                         <fieldset class="form-group">
                             <label for="state"><strong>State</strong></label>
@@ -63,12 +63,12 @@
                         <br>
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="seeking" id="male" value="male"
-                            <check if='{{ @selectedGender == "male" }}'>checked="checked"</check>>
+                            <check if='{{ !empty(@selectedGender) && @selectedGender == "male" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="seeking" id="female" value="female"
-                            <check if='{{ @selectedGender == "female" }}'>checked="checked"</check>>
+                            <check if='{{ !empty(@selectedGender) && @selectedGender == "female" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                     </div>
@@ -83,8 +83,23 @@
                 </div>
             </div>
         </div>
-        <button id="button" type="submit" class="btn-primary float-right">Next ></button>
 
+    <check if='{{ get_class(@SESSION.member) == "PremiumMember" }}'>
+        <div class="container">
+            <label><strong>Premium members may submit a photo to
+                include in their profile</strong></label>
+            <label for="fileToUpload"><strong>Profile Photo</strong></label>
+            <label>Select a file to upload</label>
+            <label>Valid file types include jpg and gif</label>
+
+            <form action="#" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload File" name="submit">
+            </form>
+        </div>
+    </check>
+
+        <button id="button" type="submit" class="btn-primary float-right">Next ></button>
     </form>
 
 </div>

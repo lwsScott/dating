@@ -66,12 +66,12 @@
                         <br>
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="male" value="male"
-                            <check if='{{ @selectedGender == "male" }}'>checked="checked"</check>>
+                            <check if='{{ !empty(@selectedGender) && @selectedGender == "male" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="female" value="female"
-                            <check if='{{ @selectedGender == "female" }}'>checked="checked"</check>>
+                            <check if='{{ !empty(@selectedGender) && @selectedGender == "female" }}'>checked="checked"</check>>
                             <label class="form-check-label" for="female">Female</label>
                         </div>
                      </div>
