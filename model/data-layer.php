@@ -1,9 +1,13 @@
 <?php
+/*
+ * data layer for dating website
+ * stores arrays of data
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/model/data-layer.php
+ * @author Lewis Scott
+ * @version 1.0
+ */
 
-/* getMeals
- returns an array of meal options
- @return array
-*/
 
 function getIndoorInts()
 {

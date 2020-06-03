@@ -1,5 +1,19 @@
 <?php
+/*
+ * Premium Member class page for dating website
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/classes/premiumMember.php
+ * @author Lewis Scott
+ * @version 1.0
+ */
 
+/*
+ * Premium Member class for dating website
+ * stores additional interests and image information
+ * 5/30/20
+ * @author Lewis Scott
+ * @version 1.0
+ */
 class PremiumMember extends Member
 {
 

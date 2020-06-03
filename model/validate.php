@@ -1,5 +1,12 @@
 <?php
-
+/*
+ * Validation Class for dating website
+ * provides validation functions
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/model/validate.php
+ * @author Lewis Scott
+ * @version 1.0
+ */
 
 /**
  * Class Validate
@@ -15,11 +22,13 @@ class Validate
         return !empty($name);
     }
 
+    // validate Age between 18 and 118 inclusive
     function validAge($age)
     {
         return (is_numeric($age) && $age >= 18 && $age <= 118);
     }
 
+    // validate Gender (it's binary)
     function validGender($gender)
     {
         if ($gender != 'male' && $gender != 'female')
@@ -32,6 +41,7 @@ class Validate
         }
     }
 
+    // validate phone number either 10 digits or 3-3-4 digits
     function validPhone($phoneNum)
     {
         //echo $phoneNum;
@@ -39,6 +49,7 @@ class Validate
             preg_match("/^[0-9]{10}$/", $phoneNum));
     }
 
+    // validate e-mail using php function
     function validEMail($email)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -48,6 +59,7 @@ class Validate
         return true;
     }
 
+    // future functionality
     function test_input($data)
     {
         $data = trim($data);
@@ -56,6 +68,7 @@ class Validate
         return $data;
     }
 
+    // validate outdoor interests - not required, just in allowed list
     function validOutdoor($outdoorInts)
     {
         //$count = (count(array_intersect($_POST['outdoorInts'], $outdoorInts)));
@@ -71,6 +84,7 @@ class Validate
         return true;
     }
 
+    // validate indoor interests - not required, just in allowed list
     function validIndoor($indoorInts)
     {
         //$count = (count(array_intersect($_POST['indoorInts'], $indoorInts)));
@@ -89,6 +103,7 @@ class Validate
         return true;
     }
 
+    // validate state - not required, just in allowed list
     function validState($state)
     {
         //$count = (count(array_intersect($_POST['indoorInts'], $indoorInts)));

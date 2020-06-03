@@ -1,15 +1,24 @@
 <?php
 /*
- * Lewis Scott
- * 4/17/20
- * filename https://lscott.greenriverdev.com/328/dating/controller/controller.php
  * Controller page for dating website
  * provides routes to various views and runs fat free
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/controller/controller.php
+ * @author Lewis Scott
+ * @version 1.0
  */
+
 require '/home2/lscottgr/config.php';
 
-/**
+/*
  * Class MemberController
+ * routes and validates data
+ * interacts with the database object
+ * creates member and Premium Member objects
+ * to carry profile information and display it
+ * 5/30/20
+ * @author Lewis Scott
+ * @version 1.0
  */
 class MemberController
 {
@@ -117,9 +126,7 @@ class MemberController
                 //Redirect to the profile route
                 $this->_f3->reroute("profile");
                 //session_destroy();
-
             }
-
         }
 
         // if method is get - display a page called personalInfo.html
@@ -134,7 +141,7 @@ class MemberController
     {
         // if the form has been submitted
         // validate the data
-        echo get_class($_SESSION['member']);
+        //echo get_class($_SESSION['member']);
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $valid = true;
@@ -158,14 +165,14 @@ class MemberController
             else {
                 $this->_f3->set('selectedState', $_POST['state']);
             }
-
+            // set seeking if set
             if (isset($_POST['seeking'])) {
                 $this->_f3->set('selectedGender', $_POST['seeking']);
             }
+            // set bio if set
             if (!empty($_POST['bio'])) {
                 $this->_f3->set('selectedBio', $_POST['bio']);
             }
-
 
             if ($valid)
             {
@@ -176,11 +183,11 @@ class MemberController
                 //$_SESSION['state'] = $_POST['state'];
                 //$_SESSION['seeking'] = $_POST['seeking'];
                 //$_SESSION['bio'] = $_POST['bio'];
+                // store data in Member Object
                 $_SESSION['member']->setEmail($_POST['email']);
                 $_SESSION['member']->setState($_POST['state']);
                 $_SESSION['member']->setSeeking($_POST['seeking']);
                 $_SESSION['member']->setBio($_POST['bio']);
-
 
                 //Redirect to the interests route if premium member
                 if (get_class($_SESSION['member']) == "PremiumMember")
@@ -192,7 +199,6 @@ class MemberController
                     $this->_f3->reroute('summary');
                 }
             }
-
         }
 
         // if method is get display a page called profile.html
@@ -201,7 +207,7 @@ class MemberController
     }
 
     /**
-     * Display the individual recipe
+     * Display the interests page
      */
     public function interests()
     {
@@ -253,7 +259,7 @@ class MemberController
             }
 
             if ($valid) {
-                // store the data in the session array
+                // store the data in the session array in a Member object
                 //$_SESSION['outdoorInts'] = $_POST['outdoorInts'];
                 //$_SESSION['indoorInts'] = $_POST['indoorInts'];
                 $_SESSION['member']->setIndoorInts($selectedIndoor);
@@ -289,20 +295,19 @@ class MemberController
 
         //echo "here in the controller image";
         $dirName = '../uploader/uploads/';
+        // store the directory name in the session
         $_SESSION['dirName'] = $dirName;
         //$target_file = $dirName . basename($_FILES["fileToUpload"]["name"]);
         //$uploadOk = 1;
-
         //echo realpath("test.txt");
-
         //echo $dirName;
         //var_dump($_FILES['fileToUpload']);
+
         //If file has been submitted
         if (isset($_FILES['fileToUpload'])) {
 
             $file = $_FILES['fileToUpload'];
             $_SESSION['member']->setImageId($file['name']);
-            //echo $file['name'];
 
             //echo $file['name'].'<br>';
             //echo $file['type'].'<br>';
@@ -346,7 +351,6 @@ class MemberController
                     $_SESSION['id'] = $id;
 
                     //echo $id;
-
                     //echo $dir;
 
                     //Get names of files
@@ -371,20 +375,6 @@ class MemberController
                 echo "<p class='error'>Invalid file type. Allowed types: gif, jpg, png</p>";
             }
         }
-        /*
-         * Show each image
-         */
-        /*
-
-
-        //Display images
-        if (sizeof($result) >= 1) {
-            foreach ($result as $row) {
-                $img = $row['filename'];
-                echo "<img class='img-thumbnail' src='$dirName$img' alt=''>";
-            }
-        }
-        */
 
         $view = new Template();
         //var_dump($view);
@@ -396,8 +386,6 @@ class MemberController
      */
     public function summary()
     {
-
-
         //Open file directory
         $dir = opendir($_SESSION['dirName']);
         //$id = $_SESSION['id'];
@@ -411,5 +399,4 @@ class MemberController
         ('views/summary.php');
         session_destroy();
     }
-
 }

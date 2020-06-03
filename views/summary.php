@@ -1,4 +1,14 @@
 <?php
+/*
+ * Summary page for dating website
+ * Summarizes information provided by users
+ * Displays only Member of Premium Member information
+ * depending on class of Member
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/controller/controller.php
+ * @author Lewis Scott
+ * @version 1.0
+ */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 //session_start();
@@ -6,9 +16,8 @@ error_reporting(E_ALL);
 <!--
   Lewis Scott
   5/1/20
-  filename https://lscott.greenriverdev.com/328/dating/views/summary.html
-  accessed through https://lscott.greenriverdev.com/328/dating/interests
-  Home page view site
+  filename https://lscott.greenriverdev.com/328/dating/views/summary.php
+  accessed through https://lscott.greenriverdev.com/328/dating/imageUpload.php
 -->
 
 <!DOCTYPE html>
@@ -38,16 +47,18 @@ error_reporting(E_ALL);
                 <p class="card mb-0 ml-3 p-2">Interests :
                     <check if="{{ !empty(@SESSION.member->getIndoorInts()) }}">
                         {{ implode(@SESSION.member->getIndoorInts(), ', ') }}
-                    </check><check if="{{ !empty(@SESSION.member->getIndoorInts()) }}">
+                    </check>
+                    <check if="{{ !empty(@SESSION.member->getIndoorInts()) }}">
                         <check if="{{ !empty(@SESSION.member->getOutdoorInts()) }}">,</check>
-                        {{ implode(@SESSION.member->getOutdoorInts(), ', ') }}
+                        <check if="{{ !empty(@SESSION.member->getOutdoorInts()) }}">
+                            {{ implode(@SESSION.member->getOutdoorInts(), ', ') }}
+                        </check>
                     </check>
                 </p>
             </check>
         </div>
 
         <!-- If Premium member has profile photo display that  -->
-        <!--   -->
         <div class="col-6">
             <check if="{{ get_class($_SESSION['member']) == 'PremiumMember' && !empty(@SESSION.member->getImageId()) }}">
                 <true>
@@ -58,6 +69,7 @@ error_reporting(E_ALL);
                 </false>
             </check>
 
+            <!-- Display bio  -->
             <p>Biography</p>
             <p> {{ @SESSION.member->getBio() }}</p>
 
@@ -71,7 +83,6 @@ error_reporting(E_ALL);
     </div>
 
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

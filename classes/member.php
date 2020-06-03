@@ -1,12 +1,19 @@
 <?php
 /*
- * Lewis Scott
+ * Member class page for dating website
  * 5/30/20
  * filename https://lscott.greenriverdev.com/328/dating/classes/member.php
- * Controller page for dating website
- * provides routes to various views and runs fat free
+ * @author Lewis Scott
+ * @version 1.0
  */
 
+/*
+ * Member class for dating website
+ * stores personal profile information
+ * 5/30/20
+ * @author Lewis Scott
+ * @version 1.0
+ */
 class Member
 {
     // member fields

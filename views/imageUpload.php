@@ -1,19 +1,11 @@
-<?php
-echo "here actually in the page";
-
-//turn on error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-
-echo "1<br>";
-
-$dirName = 'uploads/';
-echo $dirName;
-echo realpath("test.txt");
-echo "2<br>";
-?>
-
+<!--
+* Image Upload page for dating website
+* uploads image
+* 5/30/20
+* filename https://lscott.greenriverdev.com/328/dating/views/imageUpload.php
+* @author Lewis Scott
+* @version 1.0
+*/-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +34,6 @@ echo "2<br>";
         <a href="summary" class="btn-primary float-right m-2">Next ></a>
     </form>
 </div>
-
-
 
 
 <!-- Optional JavaScript -->
