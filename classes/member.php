@@ -1,5 +1,11 @@
 <?php
-
+/*
+ * Lewis Scott
+ * 5/30/20
+ * filename https://lscott.greenriverdev.com/328/dating/classes/member.php
+ * Controller page for dating website
+ * provides routes to various views and runs fat free
+ */
 
 class Member
 {
@@ -127,29 +133,4 @@ class Member
     {
         $this->_bio = $bio;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
