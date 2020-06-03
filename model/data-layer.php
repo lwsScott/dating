@@ -8,7 +8,7 @@
  * @version 1.0
  */
 
-
+// get valid indoor interests
 function getIndoorInts()
 {
     // create an array called indoorInts
@@ -18,6 +18,7 @@ function getIndoorInts()
     return $indoorInts;
 }
 
+// get valid outdoor interests
 function getOutdoorInts()
 {
     // create an array called outdoorInts
@@ -26,6 +27,7 @@ function getOutdoorInts()
     return $outdoorInts;
 }
 
+// get valid states
 function getStates()
 {
     $states = array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
