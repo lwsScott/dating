@@ -3,8 +3,8 @@
  * Lewis Scott
  * 4/17/20
  * filename https://lscott.greenriverdev.com/328/dating/index.php
- * Controller page for dating website
- * provides routes to various views and runs fat free
+ * Index page for dating website
+ * provides routes to the controller
  */
 //Turn on error reporting
 ini_set('display_errors', 1);
@@ -28,7 +28,7 @@ $f3->set('DEBUG', 3);
 
 // construct a new Database
 // which creates a new PDO connection
-$db = new Database();
+//$db = new Database();
 
 // construct a new validator
 $validator = new Validate();
@@ -68,6 +68,12 @@ $f3->route('GET|POST /profile', function($f3)
 // POST method when submitting form
 $f3->route('GET|POST /interests', function($f3){
     $GLOBALS['controller']->interests();
+});
+
+// this is the route to upload image page
+// POST method when submitting form
+$f3->route('GET|POST /image', function(){
+    $GLOBALS['controller']->image();
 });
 
 // Define a summary route

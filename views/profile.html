@@ -84,21 +84,6 @@
             </div>
         </div>
 
-    <check if='{{ get_class(@SESSION.member) == "PremiumMember" }}'>
-        <div class="container">
-            <label><strong>Premium members may submit a photo to
-                include in their profile</strong></label>
-            <label for="fileToUpload"><strong>Profile Photo</strong></label>
-            <label>Select a file to upload</label>
-            <label>Valid file types include jpg and gif</label>
-
-            <form action="#" method="post" enctype="multipart/form-data">
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload File" name="submit">
-            </form>
-        </div>
-    </check>
-
         <button id="button" type="submit" class="btn-primary float-right">Next ></button>
     </form>
 
